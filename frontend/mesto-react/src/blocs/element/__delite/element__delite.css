@@ -1,0 +1,14 @@
+.element__delite{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-image: url(../../../images/Delite_icon.svg);
+    background-color: #ffffff00;
+    border: 0;
+    width: 18px;
+    height: 19px;
+}
+
+.element__delite:hover{
+    opacity: 0.6;
+}

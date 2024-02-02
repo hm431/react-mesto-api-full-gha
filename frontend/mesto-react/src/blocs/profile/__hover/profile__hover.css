@@ -1,0 +1,14 @@
+.profile__hover{
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    border: 0;
+}
+
+.profile__hover:hover{
+    background-image: url(../../../images/edit_avatar.svg);
+    opacity: 0.6;
+    background-position: center;
+    background-repeat: no-repeat;
+
+}
