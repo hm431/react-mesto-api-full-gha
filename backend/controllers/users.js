@@ -139,10 +139,10 @@ module.exports.login = (req, res, next) => {
   User
     .findUserByCredentials(email, password)
     .then(({ _id: userId }) => {
-      if (userId) {
+  //    if (userId) {
         const token = jwt.sign( { userId },SUPERSTRONGSECRET,{ expiresIn: '7d' },);
         return res.send({ _id: token });
-      }
+  //    }
 
       throw new Forbidden('Неправильные почта или пароль');
     })
