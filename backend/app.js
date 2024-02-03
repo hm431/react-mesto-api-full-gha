@@ -72,4 +72,5 @@ app.use(errorLogger);
 app.use(errors());
 app.use(errorMiddlewares);
 app.use(express.static(path.join(__dirname, 'public')));
+console.log('WORKING');
 app.listen(PORT);
