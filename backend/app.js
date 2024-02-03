@@ -9,7 +9,7 @@ const { celebrate, Joi } = require('celebrate');
 const {errorMiddlewares} = require('./middlewares/errorMiddlewares.js');
 //const createUser = require('./controllers/users.js');
 const NotFound = require('./errors/NotFound');
-
+const { requestLogger, errorLogger } = require('./middlewares/logger');
 var cors = require('cors')
 //const { errors } = require('celebrate');
 
@@ -29,7 +29,13 @@ mongoose.connect(mongobd, {
 });
 
 
+app.use(requestLogger);
 
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
 
 
 // auth,
@@ -62,6 +68,7 @@ app.post('/signup', celebrate({
 app.use('/', (req, res) => {
   throw new NotFound('Путь не найден');
 });
+app.use(errorLogger);
 app.use(errors());
 app.use(errorMiddlewares);
 app.use(express.static(path.join(__dirname, 'public')));
