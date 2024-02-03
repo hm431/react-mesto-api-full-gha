@@ -5,12 +5,12 @@
   
 Пожалуйста, прикрепите в это описание ссылку на сайт, размещенный на Яндекс.Облаке.
 
-Адрес репозитория: <https://github.com/hm431/react-mesto-api-full-gha>
+Адрес репозитория: [GitHub Mesto](https://github.com/hm431/react-mesto-api-full-gha)
 
 ## Ссылки на проект
 
-IP-адрес <51.250.76.8>
+IP-адрес [IP](51.250.76.8)
 
-Frontend <m431.nomoredomainsmonster.ru>
+Frontend [FrontEnd URL](m431.nomoredomainsmonster.ru)
 
-Backend <api.hm431.nomoredomainsmonster.ru>
+Backend [Backend URL](api.hm431.nomoredomainsmonster.ru)
