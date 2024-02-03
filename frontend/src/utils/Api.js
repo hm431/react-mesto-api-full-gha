@@ -106,9 +106,9 @@
 }
 
 const apiConfig = {
-  url: "api.hm431.nomoredomainsmonster.ru",
+  url: "https://mesto.nomoreparties.co/v1/cohort-77",
   headers: {
- //   authorization:'f8a7d69d-f431-4bab-b92e-a7dc9553106e',
+    authorization:'f8a7d69d-f431-4bab-b92e-a7dc9553106e',
     "Content-type": 'application/json'
   },
 }

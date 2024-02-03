@@ -1,5 +1,5 @@
 import React from "react";
-import PopupWithForm from "./PopupWithForm";
+import PlaceWithForm from "./PlaceWithForm";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
 function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
@@ -47,12 +47,13 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
 
 
 
-        <PopupWithForm title="Редактировать профиль"
+        <PlaceWithForm title="Редактировать профиль"
             name="profil"
             buttonText="Сохранить"
             isOpen={isOpen}
             onClose={onClose}
-            onSubmit={handleSubmit}>
+            onSubmit={handleSubmit}
+            tipe='popup'>
 
 
             <input type="text" name="popupName" placeholder="Имя" id="name" onChange={handleChangeName}
@@ -62,7 +63,7 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
                 id="status" required minLength="2" value={description || ''} />
             <span className="popup__error  popup__error_status"></span>
 
-        </PopupWithForm>
+        </PlaceWithForm>
 
 
 

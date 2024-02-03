@@ -14,6 +14,7 @@
 @import url(./blocs/footer/__copiright/footer__copiright.css);
 @import url(./blocs/header/header.css);
 @import url(./blocs/main/main.css);
+@import url(./blocs/main/_form/main_form.css);
 @import url(./blocs/profile/__add-button/profile__add-button.css);
 @import url(./blocs/profile/__avatar/profile__avatar.css);
 @import url(./blocs/profile/__hover/profile__hover.css);
@@ -22,10 +23,26 @@
 @import url(./blocs/profile/__name/profile__name.css);
 @import url(./blocs/profile/__status/profile__status.css);
 @import url(./blocs/profile/__name-bloc/profile__name-bloc.css);
+@import url(./blocs/header/__accaunt/header__accaunt.css);
+@import url(./blocs/header/__accaunt/_log-in/header__accaunt_log-in.css);
+@import url(./blocs/header/__accaunt/_email/header__accaunt_email.css);
 @import url(./blocs/profile/profile.css);
 @import url(./blocs/popup/popup.css);
+@import url(./blocs/register/__button_text/register__button_text.css);
+@import url(./blocs/authorization/__contaier/authorization__cantainer.css);
+@import url(./blocs/authorization/__contaier/_edit/authorization__cantainer_edit.css);
+@import url(./blocs/authorization/__form/authorization__form.css);
+@import url(./blocs/authorization/__header/authorization__header.css);
+@import url(./blocs/authorization/__save/_login/authorization__save_login.css);
+@import url(./blocs/authorization/__save/_register/authorization__save_register.css);
+@import url(./blocs/authorization/__save/authorization__save.css);
+@import url(./blocs/authorization/_login/authorization_login.css);
+@import url(./blocs/authorization/_register/authorizatio_register.css);
+@import url(./blocs/authorization/__input/authorization__input.css);
+@import url(./blocs/authorization/authorization.css);
 @import url(./blocs/popup/__close/popup__close.css);
 @import url(./blocs/popup/__header/popup__header.css);
+@import url(./blocs/popup/__text/popup__text.css);
 @import url(./blocs/popup/__input/popup__input.css);
 @import url(./blocs/popup/__input/_type_error/popup__input_type_error.css);
 @import url(./blocs/popup/__save/popup__save.css);
@@ -36,6 +53,7 @@
 @import url(./blocs/popup/__backgraund/popup_backgraund.css);
 @import url(./blocs/popup/__error/popup__error.css);
 @import url(./blocs/popup/__error/_active/poup__error_active.css);
+@import url(./blocs/popup/__log-in_is-ok/popup____log-in_is-ok.css);
 /*
 @import url(../blocs/element/__popup/element__popup.css);
 @import url(../blocs/element/__popup/_container/element__popup_container.css);

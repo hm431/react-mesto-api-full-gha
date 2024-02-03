@@ -1,5 +1,5 @@
 import React from "react";
-import PopupWithForm from "./PopupWithForm";
+import PopupWithForm from "./PlaceWithForm";
 
 function AddPlacePopup({ isOpen, onClose, onUpdateCard }) {
 
@@ -39,7 +39,8 @@ function AddPlacePopup({ isOpen, onClose, onUpdateCard }) {
             buttonText="Сохранить"
             isOpen={isOpen}
             onClose={onClose}
-            onSubmit={handleSubmit}>
+            onSubmit={handleSubmit}
+            tipe='popup'>
 
             <input type="text" name="popupName" placeholder="Название" className="popup__input popup__input_place_text"
                 required minLength="2" id="text" onChange={handleChangeName} value={name} />

@@ -1,0 +1,15 @@
+.register__button_text{
+    color: #FFF;
+    text-align: center;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin: 13px auto 0 auto;
+    cursor: pointer;
+    background-color: #FFFFFF00;
+    background-size:100% 100%;
+    border: 0;
+    padding: 0;
+}

@@ -1,5 +1,5 @@
 import React from "react";
-import PopupWithForm from "./PopupWithForm";
+import PlaceWithForm from "./PlaceWithForm";
 
 
 function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar}) {
@@ -19,18 +19,19 @@ function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar}) {
 
 
     return (
-        <PopupWithForm title="Обновить аватар"
+        <PlaceWithForm title="Обновить аватар"
             name="avatar"
             buttonText="Создать"
             isOpen={isOpen}
             onClose={onClose}
-            onSubmit={handleSubmit}>
+            onSubmit={handleSubmit}
+            tipe='popup'>
 
             <input type="url" name="popupStatus" placeholder="Ссылка на картинку"
                 className="popup__input popup__input_avatar_link" id="avatar-link" required ref={avatarLinkRef} />
             <span className="popup__error  popup__error_avatar-link"></span>
 
-        </PopupWithForm>
+        </PlaceWithForm>
     );
 }
 

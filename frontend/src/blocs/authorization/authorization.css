@@ -1,0 +1,14 @@
+
+
+.authorization {
+    max-width: 880px;
+    /*width: calc(100vw - 400px); */
+    width: auto;
+    margin: 60px 200px 0 200px;
+}
+/*
+@media screen and (max-width: 1040px) {
+    .authorization {
+        width: auto;
+    }
+} */

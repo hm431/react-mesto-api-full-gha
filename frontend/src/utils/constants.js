@@ -41,10 +41,6 @@ export const parameters = {
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__error_active'
 };
-   
-
-
-
 
 export const initialCards = [
     

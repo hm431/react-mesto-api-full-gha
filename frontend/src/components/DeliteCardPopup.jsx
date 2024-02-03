@@ -1,5 +1,5 @@
 
-import PopupWithForm from "./PopupWithForm";
+import PlaceWithForm from "./PlaceWithForm";
 
 function DeliteCardPopup({ isOpen, onClose, handleCardDelete, card }) {
 
@@ -9,13 +9,14 @@ function DeliteCardPopup({ isOpen, onClose, handleCardDelete, card }) {
     }
 
     return (
-        <PopupWithForm
+        <PlaceWithForm
             title="Вы уверены?"
             buttonText="Да"
             name="delite"
             isOpen={isOpen}
             onClose={onClose}
-            onSubmit={handleSubmit}/>
+            onSubmit={handleSubmit}
+            tipe='popup'/>
     );
 }
 

@@ -1,0 +1,31 @@
+.authorization__save {
+    border: 0;
+    cursor: pointer;
+    width: 358px;
+    margin: 200px 0 0 0;
+    background: #FFF;
+    border-radius: 2px;
+    padding: 14px 0 14px 0;
+    text-align: center;
+    font-family: 'Inter' ,Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    color: #000;
+    
+}
+
+.authorization__save:hover{
+    opacity: 0.8;
+}
+
+
+@media screen and (max-width: 1040px) {
+    .authorization__save {
+        font-size: 14px;
+        width: 238px;
+        line-height: 17px;
+        margin: 45px 0 14px 0;
+    }
+}

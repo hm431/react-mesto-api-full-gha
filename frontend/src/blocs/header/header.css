@@ -4,6 +4,11 @@
     margin: 45px 200px 0 200px;
     padding: 0 0 36px 0;
     border-bottom: 1px rgba(84, 84, 84, 0.7) solid;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+
 }
 
 @media screen and (max-width: 1040px) {
