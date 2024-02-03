@@ -29,8 +29,7 @@ function Profile(){
 
         api.getUserInfo()
             .then((info) => {
-
-                changeCurrentUser(info);
+                changeCurrentUser(info.user);
                 //changeCurrentUser(info.about);
                 //changeCurrentUser(info.avatar);
             })
@@ -162,6 +161,7 @@ function Profile(){
 
         api.getCards()
             .then((list) => {
+                console.log(list);
                 changeCardsArray(list);
             })
             .catch((err) => {             //попадаем сюда если один из промисов завершится ошибкой 
@@ -184,11 +184,7 @@ function Profile(){
                     onEditAvatar={handleEditAvatarClick}
                     onCardLike={handleCardLike}
                 >
-                    <section className="elements">
-                        {cards.map(card => (
-                            <Card key={card._id} onCardClick={handleCardClick} onCardDelete={handleDeliteClick} card={card} onCardLike={handleCardLike} />
-                        ))}
-                    </section>
+                    
                 </Main>
 
                 <Footer />

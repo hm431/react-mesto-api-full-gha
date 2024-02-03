@@ -14,6 +14,7 @@ const UnauthorizedError = require('../errors/UnauthorizedError');
 
 
 module.exports.getUsers = (req, res, next) => {
+  console.log(req);
   User.find({})
     .then(users => res.send({ data: users }))
     .catch(next);

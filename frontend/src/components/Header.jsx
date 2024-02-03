@@ -16,11 +16,12 @@ function Header({ nameOfHeaderLink, linkOfHeaderLink, isProfil }) {
     }
 
     useEffect(() => {
+        
         if (localStorage.getItem('jwt')) {
             auth.getEmail(localStorage.getItem('jwt'))
                 .then((data) => {
                     console.log(data);
-                    changeProfilEmail(data.data.email);
+                    changeProfilEmail(data.user.email);
                 })
         }
     }, [])

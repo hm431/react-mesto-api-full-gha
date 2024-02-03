@@ -1,7 +1,7 @@
 import  checkResponse from './utils/checkResponse.js';
 
 
-export const BASE_URL = 'https://auth.nomoreparties.co';
+export const BASE_URL = 'http://localhost:3000';
 
 export const register = (password, email) => {
     return fetch(`${BASE_URL}/signup`, {
@@ -30,7 +30,8 @@ export const authorize = (password, email) => {
     })
         .then(checkResponse)
         .then((data) => {
-                localStorage.setItem('jwt', data.token);
+                localStorage.setItem('jwt', data._id);
+                console.log(data);
                 return data;
             
         })

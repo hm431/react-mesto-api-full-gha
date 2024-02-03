@@ -20,17 +20,27 @@
   }
 
   getCards() {
+    
     return fetch(`${this._url}/cards`, {
-      headers: this._headers,
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+        'Content-type': 'application/json'
+      },
       method: 'GET',
     })
-      .then((response) => this.onError(response))
+      .then((response) => {
+        this.onError(response)})
+
   }
 
 
   getUserInfo() {
+    console.log(this._headers);
     return fetch(`${this._url}/users/me`, {
-      headers: this._headers,
+      headers:  {
+        'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+        'Content-type': 'application/json'
+      },
       method: 'GET',
     })
       .then((response) => this.onError(response))
@@ -40,14 +50,20 @@
   changeLike(isLike, cardId){
     if (isLike){
     return fetch(`${this._url}/cards/${cardId}/likes`, {
-      headers: this._headers,
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+        'Content-type': 'application/json'
+      },
       method: 'DELETE'
     })
       .then((response) => this.onError(response))
   }
   else{
     return fetch(`${this._url}/cards/${cardId}/likes`, {
-      headers: this._headers,
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+        'Content-type': 'application/json'
+      },
       method: 'PUT',
     })
       .then((response) => this.onError(response))
@@ -57,7 +73,10 @@
 
   addCards(cardInfo) {
     return fetch(`${this._url}/cards`, {
-      headers: this._headers,
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+        'Content-type': 'application/json'
+      },
       method: 'POST',
       body: JSON.stringify({
         name: cardInfo.name,
@@ -71,7 +90,10 @@
   editAvatar(avatarLink){
     return fetch(`${this._url}/users/me/avatar`, {
       method: 'PATCH',
-      headers: this._headers,
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+        'Content-type': 'application/json'
+      },
       body: JSON.stringify({
         avatar: avatarLink.avatar
       })
@@ -83,7 +105,10 @@
   editProfil(profilData) {
     return fetch(`${this._url}/users/me`, {
       method: 'PATCH',
-      headers: this._headers,
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+        'Content-type': 'application/json'
+      },
       body: JSON.stringify({
         name: profilData.name,
         about: profilData.about
@@ -96,7 +121,10 @@
   deliteCards(cardId) {
 
     return fetch(`${this._url}/cards/${cardId}`, {
-      headers: this._headers,
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
+        'Content-type': 'application/json'
+      },
       method: 'DELETE'
     })
       .then((response) => this.onError(response))
@@ -104,11 +132,11 @@
   
 
 }
-
+ 
 const apiConfig = {
-  url: "https://mesto.nomoreparties.co/v1/cohort-77",
+  url: "http://localhost:3000",
   headers: {
-    authorization:'f8a7d69d-f431-4bab-b92e-a7dc9553106e',
+    authorization: `Bearer ${localStorage.jwt}`,
     "Content-type": 'application/json'
   },
 }

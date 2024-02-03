@@ -37,6 +37,7 @@ function Login({ handleLogin, changerequestStatus, changeInfoPopupOpen, changeTe
         }
         auth.authorize(formValue.password, formValue.email)
             .then((data) => {
+                console.log(data);
                 // нужно проверить, есть ли у данных jwt
                 // сбросьте стейт, затем в колбэке установите
                 // стейт loggedIn родительского App как true,
@@ -45,7 +46,7 @@ function Login({ handleLogin, changerequestStatus, changeInfoPopupOpen, changeTe
                 changeTextPopup('Что-то пошло не так! Попробуйте ещё раз.');
                 changerequestStatus(false);
 
-                if (data.token) {
+                if (data._id) {
                     setFormValue({ username: '', password: '' });
                     handleLogin();
                     changeTextPopup('Вы успешно авторизировались!');
