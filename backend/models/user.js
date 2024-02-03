@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
-const {URL_REG} = require('../utils/constants');
+const { URL_REG } = require('../utils/constants');
+const UnauthorizedError = require('../errors/UnauthorizedError');
 //const {errorMiddlewares} = require('../middlewares/errorMiddlewares');
 
 // напишите код здесь
@@ -42,15 +43,16 @@ const userSchema = new mongoose.Schema({
 
 
 userSchema.statics.findUserByCredentials = function (email, password) {
-  return this.findOne({email}).select('+password')
+  return this.findOne({ email }).select('+password')
     .then((user) => {
 
-      if (!email){
-        return Promise.reject(new Error('InvalidEmail'));
+      if (!email) {
+        // return Promise.reject(new Error('InvalidEmail'));
+        return next(new UnauthorizedError('Неверный пароль или почта'))
       }
       if (!user) {
         console.log('Pomogitre');
-        return Promise.reject();
+        return next(new UnauthorizedError('Неверный пароль или почта'))
       }
       return bcrypt.compare(password, user.password)
 
@@ -58,12 +60,12 @@ userSchema.statics.findUserByCredentials = function (email, password) {
 
           if (!matched) {
             console.log('Pomogitre');
-            return Promise.reject();
+            return next(new UnauthorizedError('Неверный пароль или почта'))
           }
 
           return user;
         });
     })
-    };
+};
 
 module.exports = mongoose.model('user', userSchema);

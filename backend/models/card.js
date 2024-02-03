@@ -25,12 +25,12 @@ const cardSchema = new mongoose.Schema({
     required: true,
     ref: 'user',
   },
- likes: [{
+  likes: [{
     type: ObjectId,
     ref: 'user',
     default: [],
   }],
-  createdAt:{
+  createdAt: {
     type: Date,
     default: Date.now,
   }

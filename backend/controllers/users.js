@@ -3,12 +3,11 @@ const User = require('../models/user');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 //const {errorMiddlewares} = require('../middlewares/errorMiddlewares');
-const {SUPERSTRONGSECRET} = require('../utils/constants')
+const { SUPERSTRONGSECRET } = require('../utils/constants')
 const Conflict = require('../errors/Conflict');
 const BadRequest = require('../errors/NotFound');
 const Forbidden = require('../errors/Forbidden');
 const NotFound = require('../errors/NotFound');
-//const StandartError = require('../errors/StandartError');
 const UnauthorizedError = require('../errors/UnauthorizedError');
 
 
@@ -24,14 +23,14 @@ module.exports.getUsers = (req, res, next) => {
 module.exports.getUserInfo = (req, res, next) => {
   const { userId } = req.user;
 
-  User.findById({_id: userId}).orFail()
+  User.findById({ _id: userId }).orFail()
     .then((user) => {
-       return res.send({ user });
+      return res.send({ user });
 
     })
     .catch((err) => {
 
-      if (err.name === 'DocumentNotFoundError'){
+      if (err.name === 'DocumentNotFoundError') {
         next(new NotFound('Пользователь не найден'));
       }
       else {
@@ -47,12 +46,12 @@ module.exports.getIdUsers = (req, res, next) => {
   const { userId } = req.params;
   User.findById(userId).orFail()
     .then((user) => {
-       return res.send({ user });
+      return res.send({ user });
 
     })
     .catch(err => {
 
-      if (err.name === 'DocumentNotFoundError'){
+      if (err.name === 'DocumentNotFoundError') {
         next(new NotFound('Пользователь с таким id не найден'));
       }
       else if (err.name === 'CastError') {
@@ -75,7 +74,7 @@ module.exports.createUsers = (req, res, next) => {
       avatar: req.body.avatar,
     }))
     .then((user) => {
-      LoginUserId  = user._id;
+      LoginUserId = user._id;
       res.status(201).send({
         email: user.email,
         name: user.name,
@@ -101,8 +100,9 @@ module.exports.updateUserAbout = (req, res, next) => {
   const { name, about } = req.body;
   //const { id } = req.params;
   User.findByIdAndUpdate({ _id: LoginUserId }, { name, about }, { new: true, runValidators: true, })
-    .then(user =>{
-      res.send({ user })})
+    .then(user => {
+      res.send({ user })
+    })
     .catch(err => {
       console.log(err);
       if (err.name === 'ValidationError') {
@@ -139,17 +139,18 @@ module.exports.login = (req, res, next) => {
   User
     .findUserByCredentials(email, password)
     .then(({ _id: userId }) => {
-  //    if (userId) {
-        const token = jwt.sign( { userId },SUPERSTRONGSECRET,{ expiresIn: '7d' },);
-        return res.send({ _id: token });
-  //    }
+      //    if (userId) {
+      const token = jwt.sign({ userId }, SUPERSTRONGSECRET, { expiresIn: '7d' },);
+      return res.send({ _id: token });
+      //    }
 
       throw new Forbidden('Неправильные почта или пароль');
     })
     .catch((err) => {
 
-      next(new UnauthorizedError('Путь не найден'))}
-      ); //TODo
+      next(new UnauthorizedError('Путь не найден'))
+    }
+    ); //TODo
 }
 
 

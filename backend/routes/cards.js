@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { celebrate, Joi } = require('celebrate');
 const { getCard, createCard, deliteCard, likeCard, dislikeCard } = require('../controllers/cards');
-const {URL_REG} = require('../utils/constants');
+const { URL_REG } = require('../utils/constants');
 router.get('/', getCard); //возвращает все карточки
 
 
@@ -15,7 +15,7 @@ router.post('/', celebrate({
       .pattern(URL_REG),
   }),
 }),
- createCard); //создаёт карточку
+  createCard); //создаёт карточку
 
 router.delete('/:cardId', celebrate({
   params: Joi.object().keys({
