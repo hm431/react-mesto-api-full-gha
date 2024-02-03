@@ -111,8 +111,9 @@ function Profile(){
     function handleUpdateUser(UserInfoChange) {
         console.log(UserInfoChange);
         api.editProfil(UserInfoChange)
-            .then((UserInfoChange) => {
-                changeCurrentUser(UserInfoChange);
+            .then((UserInfoChange) => { 
+                console.log(UserInfoChange);
+                changeCurrentUser(UserInfoChange.user);
                 closeAllPopups();
                 console.log(currentUser);
             })
@@ -127,7 +128,8 @@ function Profile(){
 
         api.editAvatar(UserAvatarChange)
             .then((UserAvatarChange) => {
-                changeCurrentUser(UserAvatarChange);
+                console.log(UserAvatarChange);
+                changeCurrentUser(UserAvatarChange.user);
                 closeAllPopups();
 
             })
@@ -140,8 +142,10 @@ function Profile(){
 
         api.addCards(newCard)
             .then((newCard) => {
+                console.log(newCard.data);
                 //   changeCurrentUser(UserAvatarChange);
-                changeCardsArray([newCard, ...cards]);
+            
+                changeCardsArray([newCard.data, ...cards]);
                 closeAllPopups();
 
             })
@@ -157,12 +161,11 @@ function Profile(){
 
     useEffect(() => {
 
-       
-
         api.getCards()
-            .then((data) => {
-                console.log(data.data);
-                changeCardsArray(data.data);
+            .then((card) => {
+                console.log(cards);
+                changeCardsArray(card);
+            //    console.log(cards);
             })
             .catch((err) => {             //попадаем сюда если один из промисов завершится ошибкой 
                 console.log(err);

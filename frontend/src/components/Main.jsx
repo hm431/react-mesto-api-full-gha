@@ -5,7 +5,7 @@ import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
 function Main({ onCardClick, onEditProfile, onAddPlace, onEditAvatar, onDeliteClick, onCardLike, children }) {
     const userContext = React.useContext(CurrentUserContext);
-
+    console.log(userContext);
     /*const [cards, changeCardsArray] = React.useState([]);
 
     useEffect(() =>{    
