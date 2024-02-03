@@ -1,7 +1,7 @@
 import  checkResponse from './utils/checkResponse.js';
 
 
-export const BASE_URL = 'http://localhost:3000';
+export const BASE_URL = 'https://api.hm431.nomoredomainsmonster.ru';
 
 export const register = (password, email) => {
     return fetch(`${BASE_URL}/signup`, {
@@ -31,7 +31,7 @@ export const authorize = (password, email) => {
         .then(checkResponse)
         .then((data) => {
                 localStorage.setItem('jwt', data._id);
-                console.log(data);
+   //             console.log(data);
                 return data;
             
         })

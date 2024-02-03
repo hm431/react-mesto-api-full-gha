@@ -54,7 +54,7 @@ module.exports.deliteCard = (req, res, next) => {
       if (err.name === 'DocumentNotFoundError'){
         next(new NotFound('Карточка с такими данными не найдена'));
       }
-      else if ((err.name === 'ValidationError') || (err.name === 'CastError')) {
+      else if (err.name === 'CastError') {
         next(new BadRequest('Ошибка в запросе'));
       } else {
         next(err);
@@ -81,7 +81,7 @@ module.exports.likeCard = (req, res, next) => {
       if (err.name === 'DocumentNotFoundError'){
         next(new NotFound('Карточка с такими данными не найдена'));
       }
-      else if ((err.name === 'ValidationError') || (err.name === 'CastError')) {
+      else if  (err.name === 'CastError') {
         next(new BadRequest('Ошибка в запросе'));
       } else {
         next(err);
@@ -107,7 +107,7 @@ module.exports.dislikeCard = (req, res, next) => {
       if (err.name === 'DocumentNotFoundError'){
         next(new NotFound('Карточка с такими данными не найдена'));
       }
-      if ((err.name === 'ValidationError') || (err.name === 'CastError')) {
+      if (err.name === 'CastError') {
         next(new BadRequest('Ошибка в запросе'));
       } else {
         next(err);

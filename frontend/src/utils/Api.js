@@ -35,7 +35,7 @@
 
 
   getUserInfo() {
-    console.log(this._headers);
+  //  console.log(this._headers);
     return fetch(`${this._url}/users/me`, {
       headers:  {
         'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
@@ -134,7 +134,7 @@
 }
  
 const apiConfig = {
-  url: "http://localhost:3000",
+  url: "https://api.hm431.nomoredomainsmonster.ru",
   headers: {
     authorization: `Bearer ${localStorage.jwt}`,
     "Content-type": 'application/json'

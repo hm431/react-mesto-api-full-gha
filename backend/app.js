@@ -10,7 +10,8 @@ const {errorMiddlewares} = require('./middlewares/errorMiddlewares.js');
 //const createUser = require('./controllers/users.js');
 const NotFound = require('./errors/NotFound');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-var cors = require('cors')
+var cors = require('cors');
+require('dotenv').config();
 //const { errors } = require('celebrate');
 
 const { PORT = 3000} = process.env;
@@ -71,6 +72,6 @@ app.use('/', (req, res) => {
 app.use(errorLogger);
 app.use(errors());
 app.use(errorMiddlewares);
-app.use(express.static(path.join(__dirname, 'public')));
+//app.use(express.static(path.join(__dirname, 'public')));
 console.log('WORKING');
 app.listen(PORT);

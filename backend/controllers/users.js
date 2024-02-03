@@ -24,7 +24,7 @@ module.exports.getUsers = (req, res, next) => {
 module.exports.getUserInfo = (req, res, next) => {
   const { userId } = req.user;
 
-  User.findById({_id: userId})
+  User.findById({_id: userId}).orFail()
     .then((user) => {
        return res.send({ user });
 
@@ -34,9 +34,7 @@ module.exports.getUserInfo = (req, res, next) => {
       if (err.name === 'DocumentNotFoundError'){
         next(new NotFound('Пользователь не найден'));
       }
-     else  if (err.name === 'CastError') {
-        next(new Forbidden('Передан некорректный запрос'));
-      } else {
+      else {
         next(err);
       }
     });
@@ -107,7 +105,7 @@ module.exports.updateUserAbout = (req, res, next) => {
       res.send({ user })})
     .catch(err => {
       console.log(err);
-      if (err.name === 'ValidationError' || err.name === 'CastError') {
+      if (err.name === 'ValidationError') {
         next(new BadRequest('Ошибка в запросе'));
       } else {
         next(err);

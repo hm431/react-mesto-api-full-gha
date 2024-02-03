@@ -157,12 +157,12 @@ function Profile(){
 
     useEffect(() => {
 
-
+       
 
         api.getCards()
-            .then((list) => {
-                console.log(list);
-                changeCardsArray(list);
+            .then((data) => {
+                console.log(data.data);
+                changeCardsArray(data.data);
             })
             .catch((err) => {             //попадаем сюда если один из промисов завершится ошибкой 
                 console.log(err);
