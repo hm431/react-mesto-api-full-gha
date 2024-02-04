@@ -9,8 +9,9 @@
 
 ## Ссылки на проект
 
-IP-адрес [IP](51.250.76.8)
+IP-адрес <ipv4>51.250.76.8</ipv>
 
-Frontend [FrontEnd URL](hm431.nomoredomainsmonster.ru)
 
-Backend [Backend URL](api.hm431.nomoredomainsmonster.ru)
+Frontend <url>hm431.nomoredomainsmonster.ru</url>
+
+Backend  <url>api.hm431.nomoredomainsmonster.ru</<url>>
