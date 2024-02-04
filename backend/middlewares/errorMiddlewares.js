@@ -1,14 +1,13 @@
-//const StandartError = require('../errors/standartError');
-//const standartError = new StandartError('На сервере произошла ошибка')
+// const StandartError = require('../errors/standartError');
+// const standartError = new StandartError('На сервере произошла ошибка')
 module.exports.errorMiddlewares = (err, _, res, next) => {
   console.log(err.message);
   console.log(err.statusCode);
   const statusCode = err.statusCode || 500;
 
   const message = statusCode === 500 ? 'На сервере произошла ошибка.' : err.message;
-  res.status(statusCode).send({message});
+  res.status(statusCode).send({ message });
   next();
 };
 
-
-//ToDo fix
+// ToDo fix

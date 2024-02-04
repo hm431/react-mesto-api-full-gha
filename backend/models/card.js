@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+
 const { ObjectId } = mongoose.Schema.Types;
 // напишите код здесь
 const cardSchema = new mongoose.Schema({
@@ -17,7 +18,7 @@ const cardSchema = new mongoose.Schema({
     type: String,
     required: true,
     validate: {
-      validator: (avatar) => /^((ftp|http|https):\/\/)?(www\.)?([A-Za-zА-Яа-я0-9]{1}[A-Za-zА-Яа-я0-9\-]*\.?)*\.{1}[A-Za-zА-Яа-я0-9-]{2,8}(\/([\w#!:.?+=&%@!\-\/])*)?/.test(avatar),
+      validator: (avatar) => /^((ftp|http|https):\/\/)?(www\.)?([A-Za-zА-Яа-я0-9]{1}[A-Za-zА-Яа-я0-9-]*\.?)*\.{1}[A-Za-zА-Яа-я0-9-]{2,8}(\/([\w#!:.?+=&%@!\-/])*)?/.test(avatar),
     },
   },
   owner: {
@@ -33,8 +34,7 @@ const cardSchema = new mongoose.Schema({
   createdAt: {
     type: Date,
     default: Date.now,
-  }
+  },
 });
-
 
 module.exports = mongoose.model('card', cardSchema);

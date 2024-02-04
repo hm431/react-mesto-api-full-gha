@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const { URL_REG } = require('../utils/constants');
 const UnauthorizedError = require('../errors/UnauthorizedError');
-//const {errorMiddlewares} = require('../middlewares/errorMiddlewares');
+// const {errorMiddlewares} = require('../middlewares/errorMiddlewares');
 
 // напишите код здесь
 const userSchema = new mongoose.Schema({
@@ -41,8 +41,7 @@ const userSchema = new mongoose.Schema({
   },
 });
 
-
-/*userSchema.statics.findUserByCredentials = function (email, password) {
+/* userSchema.statics.findUserByCredentials = function (email, password) {
   return this.findOne({ email }).select('+password')
     .then((user) => {
       if (!user) {
@@ -63,7 +62,6 @@ const userSchema = new mongoose.Schema({
     })
 }; */
 
-
 userSchema.statics.findUserByCredentials = function (email, password) {
   return this.findOne({ email }).select('+password')
     .then((user) => {
@@ -80,7 +78,7 @@ userSchema.statics.findUserByCredentials = function (email, password) {
 
           return user;
         });
-    })
+    });
 };
 
 module.exports = mongoose.model('user', userSchema);

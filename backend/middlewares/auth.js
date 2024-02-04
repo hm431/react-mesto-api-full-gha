@@ -1,19 +1,15 @@
 const jwt = require('jsonwebtoken');
-const { SUPERSTRONGSECRET } = require('../utils/constants')
+const { SUPERSTRONGSECRET } = require('../utils/constants');
 const UnauthorizedError = require('../errors/UnauthorizedError');
 
-
-const extractBearerToken = (header) => {
-
-  return header.replace('Bearer ', '');
-};
+const extractBearerToken = (header) => header.replace('Bearer ', '');
 
 module.exports = (req, res, next) => {
   console.log(class Forbidden extends Error { });
   const { authorization } = req.headers;
 
   if (!authorization || !authorization.startsWith('Bearer ')) {
-    return next(new UnauthorizedError('Необходима  авторизаци.'))
+    return next(new UnauthorizedError('Необходима  авторизаци.'));
   }
 
   const token = extractBearerToken(authorization);
@@ -22,7 +18,7 @@ module.exports = (req, res, next) => {
   try {
     payload = jwt.verify(token, SUPERSTRONGSECRET);
   } catch (err) {
-    return next(new UnauthorizedError('Необходима  авторизаци.'))
+    return next(new UnauthorizedError('Необходима  авторизаци.'));
   }
 
   req.user = payload; // записываем пейлоуд в объект запроса
