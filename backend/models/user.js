@@ -50,10 +50,10 @@ userSchema.statics.findUserByCredentials = function (email, password) {
         // return Promise.reject(new Error('InvalidEmail'));
      //   return (new UnauthorizedError('Неверный пароль или почта'))
      // }
-      if (!user) {
+  //    if (!user) {
   //      console.log('Pomogitre');
-        return (new UnauthorizedError('Неверный пароль или почта'))
-      }
+   //     return (new UnauthorizedError('Неверный пароль или почта'))
+     // }
       return bcrypt.compare(password, user.password)
 
         .then((matched) => {
