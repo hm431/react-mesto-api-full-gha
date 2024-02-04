@@ -46,10 +46,10 @@ userSchema.statics.findUserByCredentials = function (email, password) {
   return this.findOne({ email }).select('+password')
     .then((user) => {
 
-      if (!email) {
+    //  if (!email) {
         // return Promise.reject(new Error('InvalidEmail'));
-        return (new UnauthorizedError('Неверный пароль или почта'))
-      }
+     //   return (new UnauthorizedError('Неверный пароль или почта'))
+     // }
       if (!user) {
   //      console.log('Pomogitre');
         return (new UnauthorizedError('Неверный пароль или почта'))
@@ -66,6 +66,7 @@ userSchema.statics.findUserByCredentials = function (email, password) {
           return user;
         });
     })
+    .catch((err) =>{return(err)})
 };
 
 module.exports = mongoose.model('user', userSchema);
