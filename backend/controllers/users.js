@@ -133,28 +133,16 @@ module.exports.updateUserAvatar = (req, res, next) => {
 };
 
 
-/*module.exports.login = (req, res, next) => {
-  const { email, password } = req.body;
 
-  User
-    .findUserByCredentials(email, password)
-    .then((user) => {
-          const token = jwt.sign({  _id: user._id  }, SUPERSTRONGSECRET, { expiresIn: '7d' },);
-          return res.send({ _id: token });
-    })
-    .catch(err => {
-      next(err);
-      //     next(new UnauthorizedError('Путь не найден'))
-    }); //TODo
-} */
 
 module.exports.login = (req, res, next) => {
   const { email, password } = req.body;
-
+  console.log(email, password);
   return User.findUserByCredentials(email, password)
-    .then((user) => {
+    .then(({ _id: userId }) => {
+
       res.send({
-        token: jwt.sign({ _id: user._id }, SUPERSTRONGSECRET, { expiresIn: '7d' }),
+        token: jwt.sign({ userId }, SUPERSTRONGSECRET, { expiresIn: '7d' }),
       });
     })
     .catch((err) => {
