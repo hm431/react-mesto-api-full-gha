@@ -28,9 +28,8 @@
       },
       method: 'GET',
     })
-      .then((response) => {
-        this.onError(response)})
-
+    .then((response) => this.onError(response))
+ 
   }
 
 
@@ -88,6 +87,7 @@
 
 
   editAvatar(avatarLink){
+   // console.log(avatarLink);
     return fetch(`${this._url}/users/me/avatar`, {
       method: 'PATCH',
       headers: {
@@ -116,7 +116,7 @@
     })
       .then((response) => this.onError(response))
 
-  }
+  }    
 
   deliteCards(cardId) {
 

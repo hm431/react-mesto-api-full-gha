@@ -14,7 +14,7 @@ const NotFound = require('../errors/NotFound');
 module.exports.getCard = (req, res, next) => {
   Card.find({})
     .then(card => res.send({ data: card }))
-    .catch(err => errorMiddlewares(err, res)
+    .catch(err => next(err)
     );
 };
 
@@ -42,9 +42,9 @@ module.exports.deliteCard = (req, res, next) => {
   Card.findById(req.params.cardId).orFail()
     .then((card) => {
       if (userId === card.owner.toString()) {
-        card.deleteOne()
+        return(card.deleteOne()
           .then(() => res.send({ card }))
-        return;
+        )
       }
       else {
         next(new Forbidden('Отказано в удалении карточки.'));

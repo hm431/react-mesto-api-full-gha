@@ -124,7 +124,7 @@ module.exports.updateUserAvatar = (req, res, next) => {
     })
     .catch(err => {
       console.log(err);
-      if (err.name === 'ValidationError' || err.name === 'CastError') {
+      if (err.name === 'ValidationError') {
         next(new BadRequest('Ошибка в запросе'));
       } else {
         next(err);
@@ -144,11 +144,11 @@ module.exports.login = (req, res, next) => {
       return res.send({ _id: token });
       //    }
 
-      throw new Forbidden('Неправильные почта или пароль');
+
     })
     .catch((err) => {
-
-      next(new UnauthorizedError('Путь не найден'))
+      next(err);
+//      next(new UnauthorizedError('Путь не найден'))
     }
     ); //TODo
 }

@@ -30,8 +30,10 @@ function Profile(){
         api.getUserInfo()
             .then((info) => {
                 changeCurrentUser(info.user);
-                //changeCurrentUser(info.about);
-                //changeCurrentUser(info.avatar);
+
+       //         handleUpdateUser(info.user);
+        //        changeCurrentUser(info.user.about);
+        //        changeCurrentUser(info.user.avatar);
             })
             .catch((err) => {             //попадаем сюда если один из промисов завершится ошибкой 
                 console.log(err);
@@ -39,7 +41,7 @@ function Profile(){
     }, []);
 
 
-
+   // console.log(currentUser);
 
     function handleCardClick(card) {
         changeSelectedCard(card);
@@ -78,13 +80,15 @@ function Profile(){
     function handleCardLike(card) {
         // changeSelectedCard(card);
         // Снова проверяем, есть ли уже лайк на этой карточке
-        const isLiked = card.likes.some(i => i._id === currentUser._id);
-
+        
+        const isLiked = card.likes.some(i => i === currentUser._id);
+        
         api.changeLike(isLiked, card._id)
             .then((newCard) => {
-
-                changeCardsArray((state) => state.map((c) => c._id === card._id ? newCard : c));
-                //   console.log(newCard);
+               // console.log(newCard.card);
+             //   changeCardsArray((state) => state.map((c) => console.log(c)));
+                changeCardsArray((state) => state.map((c) => c._id === card._id ? newCard.card : c));
+                   console.log(newCard);
             })
             .catch((err) => {             //попадаем сюда если один из промисов завершится ошибкой 
                 console.log(err);
@@ -97,6 +101,7 @@ function Profile(){
 
 
         api.deliteCards(card._id)
+       //     console.log(card._id)
             .then(() => {
                 changeCardsArray((cards) => cards.filter((c) => c._id !== card._id))
                 closeAllPopups();
@@ -128,8 +133,8 @@ function Profile(){
 
         api.editAvatar(UserAvatarChange)
             .then((UserAvatarChange) => {
-                console.log(UserAvatarChange);
-                changeCurrentUser(UserAvatarChange.user);
+                console.log(UserAvatarChange.data);
+                changeCurrentUser(UserAvatarChange.data);
                 closeAllPopups();
 
             })
@@ -162,10 +167,9 @@ function Profile(){
     useEffect(() => {
 
         api.getCards()
-            .then((card) => {
-                console.log(cards);
-                changeCardsArray(card);
-            //    console.log(cards);
+            .then((list) => {
+                console.log(list);
+                changeCardsArray(list.data);
             })
             .catch((err) => {             //попадаем сюда если один из промисов завершится ошибкой 
                 console.log(err);
@@ -187,7 +191,11 @@ function Profile(){
                     onEditAvatar={handleEditAvatarClick}
                     onCardLike={handleCardLike}
                 >
-                    
+                      <section className="elements">
+                        {cards.map(card => (
+                            <Card key={card._id} onCardClick={handleCardClick} onCardDelete={handleDeliteClick} card={card} onCardLike={handleCardLike} />
+                        ))}
+                    </section>
                 </Main>
 
                 <Footer />

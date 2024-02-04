@@ -5,8 +5,14 @@ function Card({ onCardClick, card, onCardDelete, handleDeleteClick, onCardLike }
     const currentUser = React.useContext(CurrentUserContext);
 
 
-
-    const isLiked = card.likes.some(i => i._id === currentUser._id);
+  //  console.log(card);
+  //  console.log(card.owner, currentUser._id)
+  //  card.likes.some(i => console.log(i));
+  console.log(card);
+  //console.log(card.card.likes);
+  const isLiked = card.likes.some(i => i === currentUser._id);
+    
+    
 
     // Создаём переменную, которую после зададим в `className` для кнопки лайка
     const cardLikeButtonClassName = (
@@ -22,16 +28,16 @@ function Card({ onCardClick, card, onCardDelete, handleDeleteClick, onCardLike }
     }
 
     function handleButtonLike() {
-       // onCardClick(card);
+        console.log(card);
         onCardLike(card);
     }
 
     // Определяем, есть ли у карточки лайк, поставленный текущим пользователем
+    const isOwn = card.owner === currentUser._id;
   
-
+   
     // Определяем, являемся ли мы владельцем текущей карточки
-    const isOwn = card.owner._id === currentUser._id;
-
+   
     // Далее в разметке используем переменную для условного рендеринга
     //{isOwn && <button className='button_del' onClick={handleDeleteClick} />}
 
