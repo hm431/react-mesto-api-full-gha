@@ -67,7 +67,6 @@ const userSchema = new mongoose.Schema({
 userSchema.statics.findUserByCredentials = function (email, password) {
   return this.findOne({ email }).select('+password')
     .then((user) => {
-      console.log(user);
       if (!user) {
         console.log('Pomogitre');
         return Promise.reject(new UnauthorizedError('Неверный пароль или почта'));
