@@ -42,18 +42,13 @@ const userSchema = new mongoose.Schema({
 });
 
 
-userSchema.statics.findUserByCredentials = function (email, password) {
+/*userSchema.statics.findUserByCredentials = function (email, password) {
   return this.findOne({ email }).select('+password')
     .then((user) => {
-
-    //  if (!email) {
-        // return Promise.reject(new Error('InvalidEmail'));
-     //   return (new UnauthorizedError('Неверный пароль или почта'))
-     // }
-  //    if (!user) {
-  //      console.log('Pomogitre');
-   //     return (new UnauthorizedError('Неверный пароль или почта'))
-     // }
+      if (!user) {
+        console.log('Pomogitre');
+        return (new UnauthorizedError('Неверный пароль или почта'))
+      }
       return bcrypt.compare(password, user.password)
 
         .then((matched) => {
@@ -66,7 +61,26 @@ userSchema.statics.findUserByCredentials = function (email, password) {
           return user;
         });
     })
-    .catch((err) =>{return(err)})
+}; */
+
+
+userSchema.statics.findUserByCredentials = function (email, password) {
+  return this.findOne({ email })
+    .then((user) => {
+      if (!user) {
+        console.log('Pomogitre');
+        return Promise.reject(new UnauthorizedError('Неверный пароль или почта'));
+      }
+
+      return bcrypt.compare(password, user.password)
+        .then((matched) => {
+          if (!matched) {
+            return Promise.reject(new UnauthorizedError('Неверный пароль или почта'));
+          }
+
+          return user;
+        });
+    });
 };
 
 module.exports = mongoose.model('user', userSchema);
