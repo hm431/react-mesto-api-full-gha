@@ -78,7 +78,6 @@ module.exports.updateUserAbout = (req, res, next) => {
       res.send({ user });
     })
     .catch((err) => {
-      console.log(err);
       if (err.name === 'ValidationError') {
         next(new BadRequest('Ошибка в запросе'));
       } else {
@@ -90,7 +89,6 @@ module.exports.updateUserAbout = (req, res, next) => {
 module.exports.updateUserAvatar = (req, res, next) => {
   const { avatar } = req.body;
   const { userId } = req.user;
-  console.log(req.user);
   User.findByIdAndUpdate({ _id: userId }, { avatar }, { new: true, runValidators: true })
     .then((user) => {
       res.send({ data: user });
@@ -106,7 +104,6 @@ module.exports.updateUserAvatar = (req, res, next) => {
 
 module.exports.login = (req, res, next) => {
   const { email, password } = req.body;
-  console.log(email, password);
   return User.findUserByCredentials(email, password)
     .then(({ _id: userId }) => {
       res.send({

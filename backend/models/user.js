@@ -66,7 +66,6 @@ userSchema.statics.findUserByCredentials = function (email, password) {
   return this.findOne({ email }).select('+password')
     .then((user) => {
       if (!user) {
-        console.log('Pomogitre');
         return Promise.reject(new UnauthorizedError('Неверный пароль или почта'));
       }
 
