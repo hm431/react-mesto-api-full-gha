@@ -12,6 +12,6 @@
 IP 51.250.76.8
 
 
-Frontend hm431.nomoredomainsmonster.ru
+Frontend https://hm431.nomoredomainsmonster.ru
 
-Backend api.hm431.nomoredomainsmonster.ru
+Backend https://api.hm431.nomoredomainsmonster.ru
